@@ -1,0 +1,19 @@
+name: deployment@next
+
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+  deploy:
+    runs-on: github-runner.saeon.int
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: next
+
+      - name: test
+        run: |
+          echo hi
+          echo hi2
