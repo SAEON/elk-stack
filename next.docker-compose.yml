@@ -1,11 +1,11 @@
 version: '3.8'
 
 networks:
-  es_next:
-    name: es_next
+  elk_next:
+    name: elk_next
 
 volumes:
-  es_next:
+  elk_next:
     driver: local
 
 services:
@@ -26,12 +26,12 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - es_next:/usr/share/elasticsearch/data
+      - elk_next:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9200
     networks:
-      - es_next
+      - elk_next
 
   kibana:
     restart: always
@@ -43,4 +43,4 @@ services:
     depends_on:
       - elasticsearch
     networks:
-      - es_next
+      - elk_next
