@@ -46,3 +46,6 @@ sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload
 ```
+
+## Deploy
+Push to relevant branch to trigger server deployment
