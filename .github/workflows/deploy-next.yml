@@ -15,5 +15,5 @@ jobs:
 
       - name: test
         run: |
-          echo hi
+          scp README.md runner@192.168.110.105:
           echo hi2
