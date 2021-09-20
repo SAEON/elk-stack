@@ -3,7 +3,7 @@ version: '3.8'
 networks:
   elk_7.14:
     driver: overlay
-    name: elk_7.14
+    name: elk_7_14
 
 volumes:
   elk_7.14:
@@ -45,7 +45,7 @@ services:
       - 9200:9201
       - 9300:9300
     networks:
-      - elk_7.14
+      - elk_7_14
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.14.1
@@ -68,4 +68,4 @@ services:
     ports:
       - 5601:5602
     networks:
-      - elk_7.14
+      - elk_7_14
