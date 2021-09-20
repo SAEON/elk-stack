@@ -10,7 +10,6 @@ volumes:
 
 services:
   es_next:
-    container_name: es_next
     restart: always
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     environment:
@@ -35,7 +34,6 @@ services:
       - es_next
 
   kibana_next:
-    container_name: kibana_next
     restart: always
     image: docker.elastic.co/kibana/kibana:7.14.1
     environment:
