@@ -2,6 +2,7 @@ version: '3.8'
 
 networks:
   elk_next:
+    driver: overlay
     name: elk_next
 
 volumes:
@@ -12,6 +13,7 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     deploy:
+      replicas: 1
       restart_policy:
         condition: 'any'
         delay: 5s
@@ -48,6 +50,7 @@ services:
   kibana:
     image: docker.elastic.co/kibana/kibana:7.14.1
     deploy:
+      replicas: 1
       restart_policy:
         condition: 'any'
         delay: 5s
