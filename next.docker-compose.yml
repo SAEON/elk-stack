@@ -9,7 +9,7 @@ volumes:
     driver: local
 
 services:
-  es_next:
+  elasticsearch:
     restart: always
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     environment:
@@ -33,14 +33,14 @@ services:
     networks:
       - es_next
 
-  kibana_next:
+  kibana:
     restart: always
     image: docker.elastic.co/kibana/kibana:7.14.1
     environment:
-      - ELASTICSEARCH_HOSTS=http://es_next:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
       - 5601:5601
     depends_on:
-      - es_next
+      - elasticsearch
     networks:
       - es_next
