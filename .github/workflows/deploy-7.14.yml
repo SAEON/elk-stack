@@ -1,9 +1,9 @@
-name: deployment@7.14.1
+name: deployment@7.14
 
 on:
   push:
     branches:
-      - 7.14.1
+      - 7.14
 
 jobs:
   deploy:
@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 7.14.1
+          ref: 7.14
 
       - name: Copy source
         run: |
-          ssh runner@192.168.110.105 'mkdir -p deploy/7.14.1'
-          scp src/7.14.1/* runner@192.168.110.105:deploy/7.14.1/
+          ssh runner@192.168.110.105 'mkdir -p deploy/7.14'
+          scp src/7.14/* runner@192.168.110.105:deploy/7.14/
 
       - name: Deploy stack
         run: |

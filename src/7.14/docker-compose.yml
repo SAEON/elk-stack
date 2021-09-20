@@ -1,12 +1,12 @@
 version: '3.8'
 
 networks:
-  elk_7.14.1:
+  elk_7.14:
     driver: overlay
-    name: elk_7.14.1
+    name: elk_7.14
 
 volumes:
-  elk_7.14.1:
+  elk_7.14:
     driver: local
 
 services:
@@ -40,12 +40,12 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - elk_7.14.1:/usr/share/elasticsearch/data
+      - elk_7.14:/usr/share/elasticsearch/data
     ports:
       - 9200:9201
       - 9300:9300
     networks:
-      - elk_7.14.1
+      - elk_7.14
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.14.1
@@ -68,4 +68,4 @@ services:
     ports:
       - 5601:5602
     networks:
-      - elk_7.14.1
+      - elk_7.14
