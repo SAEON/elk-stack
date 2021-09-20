@@ -43,7 +43,7 @@ services:
       - elk_next:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-      - 9300:9200
+      - 9300:9300
     networks:
       - elk_next
 

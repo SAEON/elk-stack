@@ -16,7 +16,7 @@ jobs:
       - name: Copy source
         run: |
           ssh runner@192.168.110.105 'mkdir -p deploy/next'
-          scp * runner@192.168.110.105:deploy/next/
+          scp src/next/* runner@192.168.110.105:deploy/next/
 
       - name: Deploy stack
         run: |
