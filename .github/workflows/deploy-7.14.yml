@@ -15,9 +15,9 @@ jobs:
 
       - name: Copy source
         run: |
-          ssh runner@192.168.110.105 'mkdir -p deploy/7.14'
-          scp src/7.14/* runner@192.168.110.105:deploy/7.14/
+          ssh runner@7.14.elasticsearch.saeon.int 'mkdir -p deploy/7.14'
+          scp src/7.14/* runner@7.14.elasticsearch.saeon.int:deploy/7.14/
 
       - name: Deploy stack
         run: |
-          ssh runner@192.168.110.105 'sudo /opt/deploy-docker-stack.sh /home/runner/deploy/7.14/docker-compose.yml elk_7_14'
+          ssh runner@7.14.elasticsearch.saeon.int 'sudo /opt/deploy-docker-stack.sh /home/runner/deploy/7.14/docker-compose.yml elk_7_14'

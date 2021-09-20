@@ -15,9 +15,9 @@ jobs:
 
       - name: Copy source
         run: |
-          ssh runner@192.168.110.105 'mkdir -p deploy/next'
-          scp src/next/* runner@192.168.110.105:deploy/next/
+          ssh runner@next.elasticsearch.saeon.int 'mkdir -p deploy/next'
+          scp src/next/* runner@next.elasticsearch.saeon.int:deploy/next/
 
       - name: Deploy stack
         run: |
-          ssh runner@192.168.110.105 'sudo /opt/deploy-docker-stack.sh /home/runner/deploy/next/docker-compose.yml elk_next'
+          ssh runner@next.elasticsearch.saeon.int 'sudo /opt/deploy-docker-stack.sh /home/runner/deploy/next/docker-compose.yml elk_next'
