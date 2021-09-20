@@ -20,4 +20,4 @@ jobs:
 
       - name: Deploy stack
         run: |
-          sudo /opt/deploy-docker-stack.sh
+          ssh runner@192.168.110.105 'sudo /opt/deploy-docker-stack.sh /home/runner/deploy/7.14/docker-compose.yml elk_7.14'
