@@ -5,7 +5,7 @@ networks:
     name: es_next
 
 volumes:
-  elasticsearch:
+  es_next:
     driver: local
 
 services:
