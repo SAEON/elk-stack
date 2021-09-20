@@ -1,18 +1,18 @@
 version: '3.8'
 
 networks:
-  elasticsearch_next:
-    name: $DOCKER_NETWORK
+  es_next:
+    name: es_next
 
 volumes:
   elasticsearch:
     driver: local
 
 services:
-  elasticsearch:
-    container_name: $ELASTICSEARCH_CONTAINER_NAME
+  es_next:
+    container_name: es_next
     restart: always
-    image: $ELASTICSEARCH_IMAGE
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     environment:
       - xpack.security.enabled=false
       - xpack.license.self_generated.type=basic
@@ -27,22 +27,22 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - $ELASTICSEARCH_CONTAINER_NAME:/usr/share/elasticsearch/data
+      - es_next:/usr/share/elasticsearch/data
     ports:
-      - 9200:$ELASTICSEARCH_EXPOSE_9200
-      - 9300:$ELASTICSEARCH_EXPOSE_9300
+      - 9200:9200
+      - 9300:9200
     networks:
-      - $DOCKER_NETWORK
+      - es_next
 
-  kibana:
-    container_name: $KIBANA_CONTAINER_NAME
+  kibana_next:
+    container_name: kibana_next
     restart: always
-    image: $KIBANA_IMAGE
+    image: docker.elastic.co/kibana/kibana:7.14.1
     environment:
-      - ELASTICSEARCH_HOSTS=http://$ELASTICSEARCH_CONTAINER_NAME:9200
+      - ELASTICSEARCH_HOSTS=http://es_next:9200
     ports:
-      - 5601:$KIBANA_EXPOSE_5601
+      - 5601:5601
     depends_on:
-      - $ELASTICSEARCH_CONTAINER_NAME
+      - es_next
     networks:
-      - $DOCKER_NETWORK
+      - es_next
