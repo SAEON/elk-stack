@@ -17,7 +17,9 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
             host: elasticsearch.saeon.int
-            username: ${{ secrets.SAEON_RUNNER_HOST_USERNAME }}
+            username: ${{ secrets.HOST_USERNAME }}
+            password: ${{ secrets.HOST_PASSWORD }}
+            port: ${{ secrets.HOST_SSH_PORT }}
             script: whoami
 
       # - name: Copy source
