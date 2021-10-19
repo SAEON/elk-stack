@@ -24,7 +24,7 @@ jobs:
           target: "deploy"
            
       - name: (SSH) Deploy Docker stack
-        uses: appleboy/ssh-action@master
+        uses: SAEON/ssh-action@master
         with:
           host: elasticsearch.saeon.int
           username: ${{ secrets.HOST_USERNAME }}
