@@ -6,7 +6,9 @@ SAEON's Elasticsearch servers
 - [Install Docker Engine](https://docs.docker.com/engine/install/centos/)
 - [Init Docker Swarm mode](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) (using a single node - Swarm mode allows setting service usage limits on CPU and memory)
 
-## Setup a limited permissions runner
+## Setup a limited permissions user called 'runner'
+Do NOT install the GitHub runner on this server. this user allows for the runner to log into this server
+
 ```sh
 adduser runner
 su runner
