@@ -32,7 +32,7 @@ jobs:
           source: "src/next/*"
           target: "deploy/next"
            
-      - name: (SSH) Deploy docker stack
+      - name: (SSH) Deploy Docker stack
         uses: appleboy/ssh-action@master
         with:
           host: elasticsearch.saeon.int
