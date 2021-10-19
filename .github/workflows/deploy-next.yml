@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.HOST_PASSWORD }}
           port: ${{ secrets.HOST_SSH_PORT }}
           source: "src/next/docker-compose.yml"
-          target: "deploy/next/docker-compose.yml"
+          target: "deploy"
            
       - name: (SSH) Deploy Docker stack
         uses: appleboy/ssh-action@master
