@@ -7,17 +7,11 @@ SAEON's Elasticsearch servers
 - [Init Docker Swarm mode](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) (using a single node - Swarm mode allows setting service usage limits on CPU and memory)
 
 ## Setup a limited permissions user called 'runner'
-Do NOT install the GitHub runner on this server. this user allows for the runner to log into this server
 
 ```sh
 adduser runner
+passwd runner # Setup a strong password
 su runner
-mkdir ~/.ssh
-chmod 700 ~/.ssh
-touch ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-vi ~/.ssh/authorized_keys # Copy the public key of the GitHub runner server here
-exit # Logout the user, back to root
 ```
 
 The `runner` user needs to be able to run `docker`, but should not be in the `docker` group
