@@ -3,6 +3,8 @@ version: '3.8'
 networks:
   elk_next:
     name: elk_next
+    driver: overlay
+    attachable: true    
 
 volumes:
   elk_next:
