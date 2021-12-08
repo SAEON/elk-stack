@@ -31,8 +31,13 @@ chown root /opt/deploy-docker-stack.sh
 chmod 755 /opt/deploy-docker-stack.sh
 ```
 
+## Server administration
+Add the following to the root crontab
+```
+0 0 * * 0 docker system prune -f > /opt/docker-system-clean.log 2>&1
+```
 
-### Install Nginx
+## Install Nginx
 
 ```sh
 sudo yum install epel-release
