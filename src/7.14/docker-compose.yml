@@ -30,7 +30,7 @@ services:
           memory: 3G
         reservations:
           cpus: '1'
-          memory: 2G
+          memory: 1G
     environment:
       - xpack.security.enabled=false
       - xpack.license.self_generated.type=basic
