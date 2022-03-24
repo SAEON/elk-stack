@@ -50,3 +50,6 @@ sudo firewall-cmd --reload
 
 ## Deploy
 Push to relevant branch to trigger server deployment
+
+## TODO
+Add nginx blocks automatically
