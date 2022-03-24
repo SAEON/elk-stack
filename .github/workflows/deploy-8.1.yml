@@ -1,0 +1,33 @@
+name: deployment@8.1
+
+on:
+  push:
+    branches:
+      - 8.1
+
+jobs:
+  deploy:
+    runs-on: github-runner.saeon.int
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 8.1
+
+      - name: (SCP) Copy Docker files to host
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          port: ${{ secrets.HOST_SSH_PORT }}
+          source: "src/8.1/docker-compose.yml"
+          target: "deploy"
+
+      - name: (SSH) Deploy Docker stack
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          port: ${{ secrets.HOST_SSH_PORT }}
+          script: sudo /opt/deploy-docker-stack.sh /home/runner/deploy/src/8.1/docker-compose.yml elk_8_1
