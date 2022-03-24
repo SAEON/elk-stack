@@ -1,18 +1,18 @@
 version: '3.8'
 
 networks:
-  elk_next:
-    name: elk_next
+  elk_8_1:
+    name: elk_8_1
     driver: overlay
     attachable: true    
 
 volumes:
-  elk_next:
+  elk_8.1:
     driver: local
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.1.1
     deploy:
       replicas: 1
       rollback_config:
@@ -26,11 +26,11 @@ services:
         delay: 30s
       resources:
         limits:
-          cpus: '2'
-          memory: 1.5G
+          cpus: '8'
+          memory: 5G
         reservations:
-          cpus: '0.25'
-          memory: 500M
+          cpus: '1'
+          memory: 2G
     environment:
       - xpack.security.enabled=false
       - xpack.license.self_generated.type=basic
@@ -45,15 +45,15 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - elk_next:/usr/share/elasticsearch/data
+      - elk_8.1:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
-      - 9300:9300
+      - 9202:9200
+      - 9302:9300
     networks:
-      - elk_next
+      - elk_8_1
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.14.1
+    image: docker.elastic.co/kibana/kibana:8.1.1
     deploy:
       replicas: 1
       rollback_config:
@@ -71,10 +71,10 @@ services:
           memory: 750M
         reservations:
           cpus: '0.25'
-          memory: 250M    
+          memory: 250M
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
-      - 5601:5601
+      - 5603:5601
     networks:
-      - elk_next
+      - elk_8_1
