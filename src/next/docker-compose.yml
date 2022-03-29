@@ -12,7 +12,7 @@ volumes:
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.1.1
     deploy:
       replicas: 1
       rollback_config:
@@ -50,7 +50,7 @@ services:
       - elk_next
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.14.1
+    image: docker.elastic.co/kibana/kibana:8.1.1
     deploy:
       replicas: 1
       rollback_config:
