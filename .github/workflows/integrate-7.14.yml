@@ -1,0 +1,19 @@
+name: integrate@7.14
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  integrate-saeon-odp:
+    runs-on: github-runner.saeon.int
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v2
+        with:
+          ref: 7.14
+      
+      - name: Test shell script
+        shell: bash
+        run: |
+          echo "TODO"

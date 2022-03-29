@@ -26,11 +26,8 @@ services:
         delay: 30s
       resources:
         limits:
-          cpus: '8'
-          memory: 3G
-        reservations:
-          cpus: '1'
-          memory: 1G
+          cpus: '4'
+          memory: 4G
     environment:
       - xpack.security.enabled=false
       - xpack.license.self_generated.type=basic
@@ -68,10 +65,7 @@ services:
       resources:
         limits:
           cpus: '2'
-          memory: 750M
-        reservations:
-          cpus: '0.25'
-          memory: 250M
+          memory: 1024M
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
