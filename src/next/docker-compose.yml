@@ -7,7 +7,7 @@ networks:
     attachable: true    
 
 volumes:
-  elk_next:
+  data:
     driver: local
 
 services:
@@ -42,7 +42,7 @@ services:
     cap_add:
       - IPC_LOCK
     volumes:
-      - elk_next:/usr/share/elasticsearch/data
+      - data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300
