@@ -1,0 +1,2 @@
+# Elasticsearch integrations
+This is a nice spot to configure Elasticsearch indexes without having to manage any code deployments. Use the `carbon-sinks-qgis-search` integration as a guidance for how to do others. Refer to the GitHub actions file (.github/workflows/) for an example of how to use a GitHub Actions scheduled run as a deployment environment

@@ -1,4 +1,4 @@
-name: integrate@7.14
+name: integration@carbon-sinks-qgis-search
 
 on:
   schedule:
