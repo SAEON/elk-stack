@@ -52,7 +52,7 @@ jobs:
     runs-on: github-runner.saeon.int
     steps:
       - name: Execute integration
-        run: >
+        run: >-
           docker run
             -e ES_ADDRESS=7.14.elasticsearch.saeon.int
             -e ODP_ADDRESS=odp.saeon.ac.za
