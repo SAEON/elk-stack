@@ -3,11 +3,15 @@ name: integration@nccis-qgis-index
 on:
   schedule:
     - cron:  '*/10 * * * *'
+  push:
+    branches:
+      - 7.14
+
 
 env:
   REGISTRY: ghcr.io
   API_IMAGE_NAME: saeon/elk-integration
-  BRANCH_REF: main
+  BRANCH_REF: 7.14
 
 jobs:
   build-script-image:
