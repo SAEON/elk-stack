@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  API_IMAGE_NAME: saeon/elk-integration
+  API_IMAGE_NAME: saeon/elk-nccis-qgis-integration
   BRANCH_REF: main
 
 jobs:
