@@ -53,11 +53,11 @@ jobs:
     steps:
       - name: Execute integration
         run: >-
-          docker run
-            -e ES_ADDRESS=7.14.elasticsearch.saeon.int
-            -e ODP_ADDRESS=odp.saeon.ac.za
-            -e ODP_CLIENT_ID=todo
-            -e ODP_CLIENT_SECRET=todo
-            -e ODP_AUTH_SCOPES=todo
-            --rm
+          docker run \
+            -e ES_ADDRESS=7.14.elasticsearch.saeon.int \
+            -e ODP_ADDRESS=odp.saeon.ac.za \
+            -e ODP_CLIENT_ID=todo \
+            -e ODP_CLIENT_SECRET=todo \
+            -e ODP_AUTH_SCOPES=todo \
+            --rm \
             ${{ needs.build.outputs.image }}
