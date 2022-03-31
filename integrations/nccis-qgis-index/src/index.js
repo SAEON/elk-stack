@@ -14,14 +14,14 @@ const result = {
 // Start the timer
 const t0 = performance.now()
 
-console.info('Configuring ES index template', `"${ES_TEMPLATE}"`, true)
+console.info('== Configuring ES index template', `"${ES_TEMPLATE}"`)
 await configureTemplate(client)
 
 // top the timer
 const t1 = performance.now()
 
 // Test that the ODP is up
-console.info('Testing that ODP is available before recreating the index', true)
+console.info('== Testing that ODP is available before recreating the index')
 await testOdpStatus()
 
 // Delete the existing index
@@ -37,6 +37,7 @@ await client.indices
   )
 
 // Recreate the index
+console.info('== Creating index', ES_INDEX)
 await client.indices.create({ index: ES_INDEX })
 
 // Load metadata
@@ -51,9 +52,9 @@ await client.indices.flush({
 // Log the result
 const runtime = `${Math.round((t1 - t0) / 1000, 2)} seconds.`
 console.info(
-  'Index integration completed in',
+  '== Index integration completed in',
   runtime,
   'Result:',
   result,
-  "\nIf you don't see this message there was a problem"
+  "\n== If you don't see this message there was a problem"
 )
