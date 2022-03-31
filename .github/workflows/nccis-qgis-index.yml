@@ -9,11 +9,11 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  API_IMAGE_NAME: saeon/elk-nccis-qgis-integration
+  IMAGE_NAME: ${{ github.repository }}
   BRANCH_REF: main
 
 jobs:
-  build-script-image:
+  build:
     runs-on: ubuntu-latest
     outputs:
       image: ${{ steps.meta.outputs.tags }}
@@ -47,10 +47,17 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  run-integration:
-    needs: [build-script-image]
+  exe:
+    needs: [build]
     runs-on: github-runner.saeon.int
     steps:
       - name: Execute integration
-        run: |
-          echo "hi"
+        run: >
+          docker run
+            -e ES_ADDRESS=7.14.elasticsearch.saeon.int
+            -e ODP_ADDRESS=odp.saeon.ac.za
+            -e ODP_CLIENT_ID=todo
+            -e ODP_CLIENT_SECRET=todo
+            -e ODP_AUTH_SCOPES=todo
+            --rm
+            ${{ needs.build.outputs.image }}
