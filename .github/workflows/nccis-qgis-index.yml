@@ -52,7 +52,7 @@ jobs:
     runs-on: github-runner.saeon.int
     steps:
       - name: Execute integration
-        docker run hello-world
+        run: docker run hello-world
         # run: >-
         #   docker run \
         #     -e ES_ADDRESS=7.14.elasticsearch.saeon.int \
