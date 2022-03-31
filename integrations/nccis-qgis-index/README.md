@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [GQIS index integration](#gqis-index-integration)
+- [Quick start](#quick-start)
+  - [Install Node.js](#install-nodejs)
+  - [Setup Elasticsearch](#setup-elasticsearch)
+  - [Setup environment](#setup-environment)
+  - [Run the script](#run-the-script)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # GQIS index integration
 
 # Quick start

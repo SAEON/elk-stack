@@ -4,7 +4,8 @@
   "description": "Indexes ODP metadata using Elasticsearch 7.14 - this index is used by Marc Pienaar's QGIS plugin",
   "scripts": {
     "start": "prettier --write \"./**/*.@(js|jsx|json|mjs|cjs|graphql|yml)\" && TC=utc NODE_ENV=development node src/index.js",
-    "start:prod": "TC=utc NODE_ENV=production node --no-warnings src/index.js"
+    "start:prod": "chmod +x bin/exe && bin/exe",
+    "doc": "doctoc README.md"
   },
   "type": "module",
   "prettier": {
@@ -32,6 +33,7 @@
   },
   "homepage": "https://github.com/SAEON/elk-stack#readme",
   "devDependencies": {
+    "doctoc": "^2.1.0",
     "prettier": "^2.6.1"
   },
   "dependencies": {
