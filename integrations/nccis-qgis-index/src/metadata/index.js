@@ -2,11 +2,7 @@ import makeIterator from './extract/index.js'
 import insertToEs from './load/index.js'
 
 export default async () => {
-  const result = {
-    updated: 0,
-    created: 0,
-    errors: false,
-  }
+  const result = {}
 
   let iterator = await makeIterator()
   while (!iterator.done) {
@@ -14,12 +10,8 @@ export default async () => {
     const res = await insertToEs(data)
     console.info(`Processed ${data.length} records.`, `Response code`, res.statusCode)
 
-    res.items?.forEach(({ index }) => {
-      if (index.status === 201) {
-        result[index.result]++
-      } else {
-        result.errors++
-      }
+    res.body.items?.forEach(({ index }) => {
+      result[index.status] = (result[index.status] || 0) + 1
     })
 
     iterator = await iterator.next()
