@@ -15,7 +15,7 @@ env:
 jobs:
   build-script-image:
     runs-on: ubuntu-latest
-    outpus:
+    outputs:
       image: ${{ steps.meta.outputs.tags }}
     steps:
       - name: Checkout source code
