@@ -52,7 +52,7 @@ jobs:
     runs-on: github-runner.saeon.int
     steps:
       - name: Execute integration
-        run: |
+        run: >-
           docker run hello-world
         # run: >-
         #   docker run \
