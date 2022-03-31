@@ -13,53 +13,51 @@ env:
   BRANCH_REF: main
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     image: ${{ steps.meta.outputs.tags }}
-  #   steps:
-  #     - name: Checkout source code
-  #       uses: actions/checkout@v3
-  #       with:
-  #         ref: ${{ env.BRANCH_REF }}
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.meta.outputs.tags }}
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH_REF }}
 
-  #     - name: Log in to the Container registry
-  #       if: github.event_name != 'pull_request'
-  #       uses: docker/login-action@v1
-  #       with:
-  #         registry: ${{ env.REGISTRY }}
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to the Container registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-  #     - name: Extract metadata (tags, labels) for Docker
-  #       id: meta
-  #       uses: docker/metadata-action@v3
-  #       with:
-  #         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-  #         tags: |
-  #           type=sha
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha
 
-  #     - name: Build and push
-  #       uses: docker/build-push-action@v2
-  #       with:
-  #         context: integrations/nccis-qgis-index
-  #         push: ${{ github.event_name != 'pull_request' }}
-  #         tags: ${{ steps.meta.outputs.tags }}
-  #         labels: ${{ steps.meta.outputs.labels }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: integrations/nccis-qgis-index
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
   exe:
-    # needs: [build]
+    needs: [build]
     runs-on: github-runner.saeon.int
     steps:
       - name: Execute integration
         run: >-
-          docker run hello-world
-        # run: >-
-        #   docker run \
-        #     -e ES_ADDRESS=7.14.elasticsearch.saeon.int \
-        #     -e ODP_ADDRESS=odp.saeon.ac.za \
-        #     -e ODP_CLIENT_ID=todo \
-        #     -e ODP_CLIENT_SECRET=todo \
-        #     -e ODP_AUTH_SCOPES=todo \
-        #     --rm \
-        #     ${{ needs.build.outputs.image }}
+          docker run \
+            -e ES_ADDRESS=${{ secrets.ES_ADDRESS_NCCIS_QGIS_INTEGRATION }} \
+            -e ODP_ADDRESS=${{ secrets.ODP_ADDRESS }} \
+            -e ODP_CLIENT_ID=${{ secrets.ODP_CLIENT_ID }} \
+            -e ODP_CLIENT_SECRET=${{ secrets.ODP_CLIENT_SECRET }} \
+            -e ODP_AUTH_SCOPES=${{ secrets.ODP_AUTH_SCOPES }} \
+            --rm \
+            ${{ needs.build.outputs.image }}
