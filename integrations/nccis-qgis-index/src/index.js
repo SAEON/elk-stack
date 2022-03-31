@@ -4,13 +4,6 @@ import configureTemplate from './elasticsearch/template/index.js'
 import testOdpStatus from './odp/test-connection.js'
 import metadata from './metadata/index.js'
 
-// Keep track of script progress (result)
-const result = {
-  updated: 0,
-  created: 0,
-  errors: false,
-}
-
 // Start the timer
 const t0 = performance.now()
 
@@ -39,10 +32,10 @@ await client.indices
 console.info('== Creating index', ES_INDEX)
 await client.indices.create({ index: ES_INDEX })
 
-// Load metadata
-await metadata(result)
+// Load metadata (ETL)
+const result = await metadata()
 
-// Flush the index
+// Flush the index (this just persists the index sooner than it otherwise would)
 await client.indices.flush({
   index: ES_INDEX,
   wait_if_ongoing: false,

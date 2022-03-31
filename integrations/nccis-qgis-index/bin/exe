@@ -1,0 +1,3 @@
+#!/bin/bash
+
+TC=utc NODE_ENV=production node --no-warnings src/index.js
