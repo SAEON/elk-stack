@@ -27,12 +27,11 @@ await testOdpStatus()
 // Delete the existing index
 await client.indices
   .delete({ index: ES_INDEX })
-  .catch(error =>
+  .catch(() =>
     console.error(
-      'Error deleting Elasticsearch index',
+      '== Error deleting Elasticsearch index',
       ES_INDEX,
-      "This probably means it didn't exist and you can ignore this message",
-      error
+      "This probably means it didn't exist and you can ignore this message"
     )
   )
 

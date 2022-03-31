@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Indexes ODP metadata using Elasticsearch 7.14 - this index is used by Marc Pienaar's QGIS plugin",
   "scripts": {
-    "start": "prettier --write \"./**/*.@(js|jsx|json|mjs|cjs|graphql|yml)\" && TC=utc NODE_ENV=production node --no-warnings src/index.js",
+    "start": "prettier --write \"./**/*.@(js|jsx|json|mjs|cjs|graphql|yml)\" && TC=utc NODE_ENV=development node src/index.js",
     "start:prod": "TC=utc NODE_ENV=production node --no-warnings src/index.js"
   },
   "type": "module",
@@ -40,6 +40,7 @@
     "dotenv": "^16.0.0",
     "es7.14": "npm:@elastic/elasticsearch@7.14.1",
     "formdata-node": "^4.3.2",
-    "node-fetch": "^3.2.3"
+    "node-fetch": "^3.2.3",
+    "wkt": "^0.1.1"
   }
 }
