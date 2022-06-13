@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [elasticsearch](#elasticsearch)
+  - [Server setup](#server-setup)
+  - [Setup a limited permissions user called 'runner'](#setup-a-limited-permissions-user-called-runner)
+  - [Server administration](#server-administration)
+  - [Install Nginx](#install-nginx)
+  - [Deploy](#deploy)
+  - [TODO](#todo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # elasticsearch
 SAEON's Elasticsearch servers
 
@@ -7,6 +21,7 @@ SAEON's Elasticsearch servers
 - [Init Docker Swarm mode](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) (using a single node - Swarm mode allows setting service usage limits on CPU and memory)
 
 ## Setup a limited permissions user called 'runner'
+The runners hosted on github-runner.saeon.int use this login
 
 ```sh
 adduser runner
