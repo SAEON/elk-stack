@@ -1,9 +1,6 @@
 name: deployment@8.1
 
-on:
-  push:
-    branches:
-      - 8.1
+on: workflow_dispatch
 
 jobs:
   deploy:
@@ -11,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 8.1
+          ref: main
 
       - name: (SCP) Copy Docker files to host
         uses: appleboy/scp-action@master
