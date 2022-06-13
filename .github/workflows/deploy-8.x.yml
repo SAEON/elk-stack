@@ -1,4 +1,4 @@
-name: deployment@8.1
+name: deployment@8.x
 
 on: workflow_dispatch
 
@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
           port: ${{ secrets.HOST_SSH_PORT }}
-          source: "src/8.1/docker-compose.yml"
+          source: "src/8.x/docker-compose.yml"
           target: "deploy"
 
       - name: (SSH) Deploy Docker stack
@@ -27,4 +27,4 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
           port: ${{ secrets.HOST_SSH_PORT }}
-          script: sudo /opt/deploy-docker-stack.sh /home/runner/deploy/src/8.1/docker-compose.yml elk_8_1
+          script: sudo /opt/deploy-docker-stack.sh /home/runner/deploy/src/8.x/docker-compose.yml elk_8
