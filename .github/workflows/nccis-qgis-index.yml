@@ -3,9 +3,6 @@ name: integration@nccis-qgis-index
 on:
   schedule:
     - cron:  '0 1 * * *'
-  push:
-    branches:
-      - main
 
 env:
   REGISTRY: ghcr.io
