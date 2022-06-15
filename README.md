@@ -64,7 +64,7 @@ sudo firewall-cmd --reload
 ```
 
 ## Deploy
-Push to relevant branch to trigger server deployment
+Github actions are all run via `workflow_dispatch` triggers
 
 ## TODO
 Add nginx blocks automatically
