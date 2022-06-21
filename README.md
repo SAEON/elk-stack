@@ -1,26 +1,25 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [elasticsearch](#elasticsearch)
-  - [Server setup](#server-setup)
-  - [Setup a limited permissions user called 'runner'](#setup-a-limited-permissions-user-called-runner)
-  - [Server administration](#server-administration)
-  - [Install Nginx](#install-nginx)
-  - [Deploy](#deploy)
-  - [TODO](#todo)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # elasticsearch
 SAEON's Elasticsearch servers
 
-## Server setup
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Server setup](#server-setup)
+- [Setup a limited permissions user called 'runner'](#setup-a-limited-permissions-user-called-runner)
+- [Server administration](#server-administration)
+- [Install Nginx](#install-nginx)
+- [Deploy](#deploy)
+- [TODO](#todo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Server setup
 
 - [Install Docker Engine](https://docs.docker.com/engine/install/centos/)
 - [Init Docker Swarm mode](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/) (using a single node - Swarm mode allows setting service usage limits on CPU and memory)
 
-## Setup a limited permissions user called 'runner'
+# Setup a limited permissions user called 'runner'
 The runners hosted on github-runner.saeon.int use this login
 
 ```sh
@@ -46,13 +45,13 @@ chown root /opt/deploy-docker-stack.sh
 chmod 755 /opt/deploy-docker-stack.sh
 ```
 
-## Server administration
+# Server administration
 Add the following to the root crontab
 ```
 0 0 * * 0 docker system prune -f > /opt/docker-system-clean.log 2>&1
 ```
 
-## Install Nginx
+# Install Nginx
 
 ```sh
 sudo yum install epel-release
@@ -63,8 +62,8 @@ sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload
 ```
 
-## Deploy
-Push to relevant branch to trigger server deployment
+# Deploy
+Github actions are all run via `workflow_dispatch` triggers
 
-## TODO
+# TODO
 Add nginx blocks automatically
