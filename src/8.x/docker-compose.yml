@@ -2,7 +2,7 @@ version: '3.8'
 
 networks:
   elk_8:
-    name: elk_8_x
+    name: elk_8
     driver: overlay
     attachable: true    
 
@@ -47,7 +47,7 @@ services:
       - 9202:9200
       - 9302:9300
     networks:
-      - elk_8_x
+      - elk_8
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.2.2
@@ -71,4 +71,4 @@ services:
     ports:
       - 5603:5601
     networks:
-      - elk_8_x
+      - elk_8
