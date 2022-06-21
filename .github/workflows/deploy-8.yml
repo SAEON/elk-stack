@@ -1,4 +1,4 @@
-name: deployment@8.x
+name: deployment@8
 
 on: workflow_dispatch
 
